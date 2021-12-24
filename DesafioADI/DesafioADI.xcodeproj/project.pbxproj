@@ -39,6 +39,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D71ED33C27760BF400582636 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D7A50488277419960059CB38 /* AppDelegate.swift */,
+				D7A5048A277419960059CB38 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D71ED33D27760C1100582636 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		D71ED33E27760C1E00582636 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D7A5048C277419960059CB38 /* ViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D71ED33F27760C3300582636 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D7A5047C277419960059CB38 = {
 			isa = PBXGroup;
 			children = (
@@ -58,9 +89,10 @@
 		D7A50487277419960059CB38 /* DesafioADI */ = {
 			isa = PBXGroup;
 			children = (
-				D7A50488277419960059CB38 /* AppDelegate.swift */,
-				D7A5048A277419960059CB38 /* SceneDelegate.swift */,
-				D7A5048C277419960059CB38 /* ViewController.swift */,
+				D71ED33F27760C3300582636 /* Model */,
+				D71ED33E27760C1E00582636 /* View */,
+				D71ED33D27760C1100582636 /* Presenter */,
+				D71ED33C27760BF400582636 /* App */,
 				D7A5048E277419960059CB38 /* Main.storyboard */,
 				D7A50494277419990059CB38 /* Assets.xcassets */,
 				D7A50496277419990059CB38 /* LaunchScreen.storyboard */,
