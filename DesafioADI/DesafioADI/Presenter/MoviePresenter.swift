@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import CoreData
+import UIKit
 
 protocol MovieViewDelegate: NSObjectProtocol {
     func displayMovie(movie: MovieDetails)
@@ -13,6 +15,7 @@ protocol MovieViewDelegate: NSObjectProtocol {
 
 class MoviePresenter {
 
+    var favoriteMovies: [NSManagedObject] = []
     weak private var movieViewDelegate: MovieViewDelegate?
     
     
@@ -34,5 +37,27 @@ class MoviePresenter {
             
         }
         task.resume()
+    }
+    
+    func saveMovie(id: Int){
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+          return
+        }
+
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "FavoriteMovie", in: managedContext)!
+        let movie = NSManagedObject(entity: entity, insertInto: managedContext)
+        movie.setValue(id, forKeyPath: "movieId")
+
+        do {
+          try managedContext.save()
+          favoriteMovies.append(movie)
+            print(favoriteMovies)
+        
+        } catch let error as NSError {
+          print("Could not save. \(error), \(error.userInfo)")
+        }
+        
     }
 }

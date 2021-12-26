@@ -41,15 +41,22 @@ class MovieViewController: UIViewController, MovieViewDelegate {
         moviePresenter.movieDetails(id: id)
         view.backgroundColor = .systemBackground
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .plain, target: self, action: #selector(favorite))
+        
         view.addSubview(overview)
         view.addSubview(movieOverView)
-        
         setupConstraints()
     }
   
     func displayMovie(movie: MovieDetails) {
         self.movie = movie
-        self.movieOverView.text = self.movie.overview
+        DispatchQueue.main.async {
+            self.movieOverView.text = self.movie.overview
+        }
+    }
+    
+    @objc func favorite(sender: UIBarButtonItem) {
+        moviePresenter.saveMovie(id: id)
     }
     
     private func setupConstraints(){

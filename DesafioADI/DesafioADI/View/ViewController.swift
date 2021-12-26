@@ -24,7 +24,7 @@ class ViewController: UITabBarController, UITabBarControllerDelegate{
             tabOne.tabBarItem = tabOneBarItem
             
             
-            let rootVc2 = ExploreViewController()
+            let rootVc2 = AccountTableViewController()
             let tabTwo = UINavigationController(rootViewController: rootVc2)
             let tabTwoBarItem2 = UITabBarItem(title: "Account", image: UIImage(systemName: "person.circle"), selectedImage: UIImage(systemName: "person.circle.fill"))
             tabTwo.tabBarItem = tabTwoBarItem2

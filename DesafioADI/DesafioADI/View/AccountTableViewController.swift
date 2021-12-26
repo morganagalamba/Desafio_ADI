@@ -1,50 +1,43 @@
 //
-//  ExploreViewController.swift
+//  AccountTableViewController.swift
 //  DesafioADI
 //
 //  Created by Morgana Galamba on 25/12/21.
 //
 
-import Foundation
 import UIKit
 
-class ExploreViewController: UITableViewController, ExploreViewDelegate {
+class AccountTableViewController: UITableViewController, AccountViewDelegate {
     
-    var movies = Movies()
-    private let explorePresenter = ExplorePresenter()
+    private let accountPresenter = AccountPresenter()
+    var movies: [MovieDetails] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        explorePresenter.fillMovies()
+        navigationItem.title = "Account"
+
         tableView.register(MoviesTableViewCell.self, forCellReuseIdentifier: MoviesTableViewCell.identifier)
-        navigationItem.title = "Explore"
-        explorePresenter.setViewDelegate(exploreViewDelegate: self)
-        
+        accountPresenter.setViewDelegate(accountViewDelegate: self)
+        accountPresenter.getMovie()
     }
-    
-    func displayMovies(movies: Movies) {
-        self.movies = movies
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-    }
+
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return self.movies.count ?? 5
+    }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if(section == 0) {
-            return "Popular Movies"
+            return "Favourite movies"
         } else {
             return " "
         }
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return self.movies.results?.count ?? 5
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,9 +45,9 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate {
             return UITableViewCell()
         }
         
-        cell.movieName.text = movies.results?[indexPath.row].title
+        cell.movieName.text = self.movies[indexPath.row].title
         
-        let releaseData = movies.results?[indexPath.row].release_date ?? ""
+        let releaseData = self.movies[indexPath.row].releaseDate ?? ""
         
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd"
@@ -72,13 +65,15 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let id = movies.results?[indexPath.row].id
-        let rootVC = MovieViewController()
-        rootVC.id = id ?? 0
-        self.navigationController?.pushViewController(rootVC, animated: true)
+    func displayMovies(movies: [MovieDetails]) {
+        self.movies = movies
+        print(self.movies)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
         
     }
     
-}
+    
 
+}

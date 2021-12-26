@@ -14,6 +14,8 @@
 		D71ED34A2777F6E200582636 /* MoviePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71ED3492777F6E200582636 /* MoviePresenter.swift */; };
 		D71ED34C2777F7B900582636 /* MovieDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71ED34B2777F7B900582636 /* MovieDetails.swift */; };
 		D71ED34E2777F81100582636 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71ED34D2777F81100582636 /* MovieViewController.swift */; };
+		D71ED3522778101100582636 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71ED3512778101100582636 /* AccountTableViewController.swift */; };
+		D71ED3542778138800582636 /* AccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71ED3532778138800582636 /* AccountPresenter.swift */; };
 		D7A50489277419960059CB38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A50488277419960059CB38 /* AppDelegate.swift */; };
 		D7A5048B277419960059CB38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A5048A277419960059CB38 /* SceneDelegate.swift */; };
 		D7A5048D277419960059CB38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A5048C277419960059CB38 /* ViewController.swift */; };
@@ -30,6 +32,8 @@
 		D71ED3492777F6E200582636 /* MoviePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePresenter.swift; sourceTree = "<group>"; };
 		D71ED34B2777F7B900582636 /* MovieDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetails.swift; sourceTree = "<group>"; };
 		D71ED34D2777F81100582636 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
+		D71ED3512778101100582636 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
+		D71ED3532778138800582636 /* AccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPresenter.swift; sourceTree = "<group>"; };
 		D7A50485277419960059CB38 /* DesafioADI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioADI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A50488277419960059CB38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7A5048A277419960059CB38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +69,7 @@
 			children = (
 				D71ED3422777999D00582636 /* ExplorePresenter.swift */,
 				D71ED3492777F6E200582636 /* MoviePresenter.swift */,
+				D71ED3532778138800582636 /* AccountPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -76,6 +81,7 @@
 				D7A5048C277419960059CB38 /* ViewController.swift */,
 				D71ED3472777EAF800582636 /* ExploreViewController.swift */,
 				D71ED34D2777F81100582636 /* MovieViewController.swift */,
+				D71ED3512778101100582636 /* AccountTableViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -200,6 +206,8 @@
 			files = (
 				D71ED3432777999D00582636 /* ExplorePresenter.swift in Sources */,
 				D7A50493277419960059CB38 /* DesafioADI.xcdatamodeld in Sources */,
+				D71ED3522778101100582636 /* AccountTableViewController.swift in Sources */,
+				D71ED3542778138800582636 /* AccountPresenter.swift in Sources */,
 				D71ED34E2777F81100582636 /* MovieViewController.swift in Sources */,
 				D7A5048D277419960059CB38 /* ViewController.swift in Sources */,
 				D71ED34C2777F7B900582636 /* MovieDetails.swift in Sources */,
