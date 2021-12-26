@@ -7,57 +7,29 @@
 
 import UIKit
 
-class ExploreViewController: UITableViewController, ExploreViewDelegate {
-    
-    var movies = Movies()
-    private let explorePresenter = ExplorePresenter()
+class ViewController: UITabBarController, UITabBarControllerDelegate{
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        explorePresenter.fillMovies()
-        tableView.register(MoviesTableViewCell.self, forCellReuseIdentifier: MoviesTableViewCell.identifier)
-        navigationItem.title = "Movies"
-       
-        explorePresenter.setViewDelegate(exploreViewDelegate: self)
-        
-        
-    }
-    
-    func displayMovies(movies: Movies) {
-        self.movies = movies
-        self.tableView.reloadData()
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return self.movies.results?.count ?? 5
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MoviesTableViewCell.identifier, for: indexPath) as? MoviesTableViewCell else {
-            return UITableViewCell()
+            super.viewDidLoad()
+            self.delegate = self
+            
         }
         
-        cell.movieName.text = movies.results?[indexPath.row].title
-        
-        let releaseData = movies.results?[indexPath.row].release_date ?? ""
-        
-        let dateFormatterGet = DateFormatter()
-        dateFormatterGet.dateFormat = "yyyy-MM-dd"
+        override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+ 
+            let tabOne = ExploreViewController()
+            let tabOneBarItem = UITabBarItem(title: "Explore", image: UIImage(systemName: "square.grid.2x2"), selectedImage: UIImage(systemName: "square.grid.2x2.fill"))
+            tabOne.tabBarItem = tabOneBarItem
+            
+            
 
-        let dateFormatterPrint = DateFormatter()
-        dateFormatterPrint.dateFormat = "MMM d, yyyy"
-
-        if let date = dateFormatterGet.date(from: releaseData) {
-            print(dateFormatterPrint.string(from: date))
-            cell.releaseDate.text = dateFormatterPrint.string(from: date)
-        } else {
-           cell.releaseDate.text = "data unavailable"
-           print("There was an error decoding the string")
+            let tabTwo = ExploreViewController()
+            let tabTwoBarItem2 = UITabBarItem(title: "Account", image: UIImage(systemName: "person.circle"), selectedImage: UIImage(systemName: "person.circle.fill"))
+            
+            tabTwo.tabBarItem = tabTwoBarItem2
+            
+            
+            self.viewControllers = [tabOne, tabTwo]
         }
-
-        return cell
-    }
-    
 }
-
