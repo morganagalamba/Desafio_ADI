@@ -39,6 +39,7 @@ class MovieViewController: UIViewController, MovieViewDelegate {
         super.viewDidLoad()
         moviePresenter.setViewDelegate(movieViewDelegate: self)
         moviePresenter.movieDetails(id: id)
+        view.backgroundColor = .systemBackground
         
         view.addSubview(overview)
         view.addSubview(movieOverView)
