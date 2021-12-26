@@ -17,7 +17,7 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate {
         super.viewDidLoad()
         explorePresenter.fillMovies()
         tableView.register(MoviesTableViewCell.self, forCellReuseIdentifier: MoviesTableViewCell.identifier)
-        navigationItem.title = "Movies"
+        navigationItem.title = "Popular Movies"
        
         explorePresenter.setViewDelegate(exploreViewDelegate: self)
         

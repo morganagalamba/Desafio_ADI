@@ -17,16 +17,16 @@ class ViewController: UITabBarController, UITabBarControllerDelegate{
         
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
- 
-            let tabOne = ExploreViewController()
+            
+            let rootVc = ExploreViewController()
+            let tabOne = UINavigationController(rootViewController: rootVc)
             let tabOneBarItem = UITabBarItem(title: "Explore", image: UIImage(systemName: "square.grid.2x2"), selectedImage: UIImage(systemName: "square.grid.2x2.fill"))
             tabOne.tabBarItem = tabOneBarItem
             
             
-
-            let tabTwo = ExploreViewController()
+            let rootVc2 = ExploreViewController()
+            let tabTwo = UINavigationController(rootViewController: rootVc2)
             let tabTwoBarItem2 = UITabBarItem(title: "Account", image: UIImage(systemName: "person.circle"), selectedImage: UIImage(systemName: "person.circle.fill"))
-            
             tabTwo.tabBarItem = tabTwoBarItem2
             
             
