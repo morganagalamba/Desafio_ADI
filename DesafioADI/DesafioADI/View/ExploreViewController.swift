@@ -18,9 +18,7 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate {
         explorePresenter.fillMovies()
         tableView.register(MoviesTableViewCell.self, forCellReuseIdentifier: MoviesTableViewCell.identifier)
         navigationItem.title = "Popular Movies"
-       
         explorePresenter.setViewDelegate(exploreViewDelegate: self)
-        
         
     }
     
@@ -57,6 +55,14 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate {
         }
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let id = movies.results?[indexPath.row].id
+        let rootVC = MovieViewController()
+        rootVC.id = id ?? 0
+        self.navigationController?.pushViewController(rootVC, animated: true)
+        
     }
     
 }

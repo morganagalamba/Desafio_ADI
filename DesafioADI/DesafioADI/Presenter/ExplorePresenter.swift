@@ -29,7 +29,6 @@ class ExplorePresenter {
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             
             if let result = try? JSONDecoder().decode(Movies.self, from: data!) {
-                print(result)
                 self.exploreViewDelegate?.displayMovies(movies: result)
             } else {
                 print("Erro ao decodificar dados da API")
