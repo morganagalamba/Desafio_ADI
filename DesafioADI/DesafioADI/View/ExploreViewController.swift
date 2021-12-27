@@ -35,7 +35,8 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate, UISearc
         guard let text = searchBar.searchBar.text else {
             return
         }
-        explorePresenter.searchMovie(query: textna)
+        explorePresenter.searchMovie(query: text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "")
+        //self.tableView.reloadData()
     
     }
     
@@ -61,7 +62,7 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate, UISearc
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.movies.results?.count ?? 5
+        return self.movies.results?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
