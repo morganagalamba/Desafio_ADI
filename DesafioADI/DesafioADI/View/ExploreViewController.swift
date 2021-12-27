@@ -8,8 +8,9 @@
 import Foundation
 import UIKit
 
-class ExploreViewController: UITableViewController, ExploreViewDelegate,  UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+class ExploreViewController: UITableViewController, ExploreViewDelegate, UISearchResultsUpdating {
     
+    let searchBar:UISearchController = UISearchController()
     var movies = Movies()
     private let explorePresenter = ExplorePresenter()
     
@@ -20,7 +21,8 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate,  UISear
         navigationItem.title = "Explore"
         explorePresenter.setViewDelegate(exploreViewDelegate: self)
         
-        let searchBar:UISearchController = UISearchController()
+        
+        searchBar.searchResultsUpdater = self
         navigationItem.searchController =  searchBar
 
     }
@@ -30,7 +32,11 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate,  UISear
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        
+        guard let text = searchBar.searchBar.text else {
+            return
+        }
+        explorePresenter.searchMovie(query: textna)
+    
     }
     
     func displayMovies(movies: Movies) {

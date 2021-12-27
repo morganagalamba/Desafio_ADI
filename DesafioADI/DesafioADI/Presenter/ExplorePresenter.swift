@@ -47,7 +47,22 @@ class ExplorePresenter {
         }
         return data
     
-        
+    }
+    
+    func searchMovie(query: String){
+        let url = URL(string: "https://api.themoviedb.org/3/search/movie?api_key=f13794b05602015b7f895fed45d8e8f7&query=\(query)")!
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            
+            if let result = try? JSONDecoder().decode(Movies.self, from: data!) {
+                self.exploreViewDelegate?.displayMovies(movies: result)
+            } else {
+                print("Erro ao decodificar dados da API")
+            }
+            
+        }
+        task.resume()
+    
     }
 }
 

@@ -19,7 +19,7 @@ class MoviesTableViewCell: UITableViewCell {
         let photo = UIImageView()
         photo.contentMode = .scaleAspectFit
         photo.translatesAutoresizingMaskIntoConstraints = false
-        photo.frame = CGRect(x: 0, y: 0, width: 440, height: 660)
+        photo.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         return photo
     }()
     
@@ -42,7 +42,6 @@ class MoviesTableViewCell: UITableViewCell {
         //contentView.translatesAutoresizingMaskIntoConstraints = false
         //contentView.clipsToBounds = true
         moviePhotoView = UIImageView(image: moviePhoto)
-        
         contentView.addSubview(movieName)
         contentView.addSubview(releaseDate)
         contentView.addSubview(moviePhotoView)
