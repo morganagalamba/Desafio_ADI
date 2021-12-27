@@ -79,9 +79,9 @@ class AccountTableViewController: UITableViewController, AccountViewDelegate {
     
     func displayMovies(movies: [MovieDetails]) {
         self.movies = movies
-        /*DispatchQueue.main.async {
+        DispatchQueue.main.async {
             self.tableView.reloadData()
-        }*/
+        }
     }
     
     

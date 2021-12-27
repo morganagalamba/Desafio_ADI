@@ -40,7 +40,18 @@ class MoviePresenter {
     }
     
     func saveMovie(id: Int){
+        let newMovie = FavoriteMovie(context: context)
+        newMovie.movieId = Int64(id)
         
+        
+        do {
+            try context.save()
+            //favoriteMovies.append(newMovie)
+        } catch let error as NSError{
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
+        /*
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
           return
         }
@@ -55,12 +66,18 @@ class MoviePresenter {
         
         } catch let error as NSError {
           print("Could not save. \(error), \(error.userInfo)")
-        }
+        }*/
         
     }
     
     func deleteMovie(movie: FavoriteMovie){
+        context.delete(movie)
         
+        do {
+            try context.save()
+        } catch let error as NSError{
+            print("Could not save. \(error), \(error.userInfo)")
+        }
         
     }
     

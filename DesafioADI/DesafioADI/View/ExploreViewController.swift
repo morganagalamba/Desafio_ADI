@@ -41,6 +41,9 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate, UISearc
     
     func displayMovies(movies: Movies) {
         self.movies = movies
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
  
     override func numberOfSections(in tableView: UITableView) -> Int {
