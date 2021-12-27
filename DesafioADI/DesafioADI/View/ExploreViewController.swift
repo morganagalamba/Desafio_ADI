@@ -22,7 +22,6 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate, UISearc
         explorePresenter.setViewDelegate(exploreViewDelegate: self)
         searchBar.searchResultsUpdater = self
         navigationItem.searchController =  searchBar
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,10 +46,14 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate, UISearc
 
     }
 
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
+    
+    
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if(section == 0) {
