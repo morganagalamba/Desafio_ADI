@@ -7,8 +7,11 @@
 
 import UIKit
 
-class SearchTableViewController: UITableViewController {
 
+
+class SearchTableViewController: UITableViewController {
+    var movies = Movies()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

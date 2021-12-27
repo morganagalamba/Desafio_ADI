@@ -20,8 +20,6 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate, UISearc
         tableView.register(MoviesTableViewCell.self, forCellReuseIdentifier: MoviesTableViewCell.identifier)
         navigationItem.title = "Explore"
         explorePresenter.setViewDelegate(exploreViewDelegate: self)
-        
-        
         searchBar.searchResultsUpdater = self
         navigationItem.searchController =  searchBar
 
@@ -29,22 +27,24 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate, UISearc
     
     override func viewWillAppear(_ animated: Bool) {
         self.tableView.reloadData()
+        explorePresenter.fillMovies()
     }
     
     func updateSearchResults(for searchController: UISearchController) {
+        
         guard let text = searchBar.searchBar.text else {
             return
         }
         explorePresenter.searchMovie(query: text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "")
-        //self.tableView.reloadData()
+        self.tableView.reloadData()
+
     
     }
+
     
     func displayMovies(movies: Movies) {
         self.movies = movies
-        /*DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }*/
+
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
