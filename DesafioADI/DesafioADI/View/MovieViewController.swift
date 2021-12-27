@@ -7,12 +7,21 @@
 
 import Foundation
 import UIKit
-
-class MovieViewController: UIViewController, MovieViewDelegate {
-    
+ 
+class MovieViewController: UIViewController, UIScrollViewDelegate, MovieViewDelegate {
+   
+    public var moviePhoto : UIImage = UIImage()
     var movie = MovieDetails()
     private let moviePresenter = MoviePresenter()
     var id = Int()
+    
+    public var moviePhotoView : UIImageView = {
+        let photo = UIImageView()
+        photo.contentMode = .scaleAspectFit
+        photo.translatesAutoresizingMaskIntoConstraints = false
+        photo.frame = CGRect(x: 0, y: 0, width: 440, height: 660)
+        return photo
+    }()
     
     public let overview: UILabel = {
         let label = UILabel()
@@ -45,6 +54,8 @@ class MovieViewController: UIViewController, MovieViewDelegate {
         
         view.addSubview(overview)
         view.addSubview(movieOverView)
+        view.addSubview(moviePhotoView)
+        
         setupConstraints()
     }
   
@@ -52,6 +63,7 @@ class MovieViewController: UIViewController, MovieViewDelegate {
         self.movie = movie
         DispatchQueue.main.async {
             self.movieOverView.text = self.movie.overview
+            self.moviePhotoView.image = self.moviePhoto
         }
     }
     
@@ -62,7 +74,7 @@ class MovieViewController: UIViewController, MovieViewDelegate {
     private func setupConstraints(){
         
         NSLayoutConstraint.activate([
-            overview.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor,constant: 16),
+            overview.topAnchor.constraint(equalTo: moviePhotoView.bottomAnchor,constant: 16),
             overview.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             overview.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8)
            
@@ -72,6 +84,10 @@ class MovieViewController: UIViewController, MovieViewDelegate {
             movieOverView.topAnchor.constraint(equalTo: overview.bottomAnchor ,constant: 16),
             movieOverView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             movieOverView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -8)
+        ])
+        
+        NSLayoutConstraint.activate([
+            moviePhotoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor ,constant: 16),
         ])
     
     }

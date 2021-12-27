@@ -12,8 +12,14 @@ class MoviesTableViewCell: UITableViewCell {
     
     static let identifier = "MoviesTableViewCell"
 
-    public let moviePhoto : UIImageView = {
+    public var moviePhoto : UIImage = UIImage()
+
+    
+    public var moviePhotoView : UIImageView = {
         let photo = UIImageView()
+        photo.contentMode = .scaleAspectFit
+        photo.translatesAutoresizingMaskIntoConstraints = false
+        photo.frame = CGRect(x: 0, y: 0, width: 440, height: 660)
         return photo
     }()
     
@@ -34,11 +40,12 @@ class MoviesTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         //contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.clipsToBounds = true
-        //contentView.addSubview(moviePhoto)
+        //contentView.clipsToBounds = true
+        moviePhotoView = UIImageView(image: moviePhoto)
+        
         contentView.addSubview(movieName)
         contentView.addSubview(releaseDate)
-        
+        contentView.addSubview(moviePhotoView)
         setupConstraints()
     }
     
@@ -48,19 +55,22 @@ class MoviesTableViewCell: UITableViewCell {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            //movieName.heightAnchor.constraint(equalToConstant: 88),
-            movieName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            movieName.leadingAnchor.constraint(equalTo: moviePhotoView.trailingAnchor, constant: 16),
             movieName.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 16),
             movieName.bottomAnchor.constraint(equalTo: releaseDate.topAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            //movieName.heightAnchor.constraint(equalToConstant: 88),
-            releaseDate.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            releaseDate.leadingAnchor.constraint(equalTo: moviePhotoView.trailingAnchor, constant: 16),
             releaseDate.topAnchor.constraint(equalTo: movieName.bottomAnchor,constant: 16),
             releaseDate.bottomAnchor.constraint(equalTo: contentView.bottomAnchor,constant: -8)
         ])
         
+        NSLayoutConstraint.activate([
+            moviePhotoView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: -16),
+            moviePhotoView.topAnchor.constraint(equalTo: contentView.topAnchor,constant: -16),
+            
+        ])
     }
     
 

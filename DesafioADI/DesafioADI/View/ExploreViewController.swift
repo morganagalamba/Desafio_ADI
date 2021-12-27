@@ -64,6 +64,7 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate,  UISear
         }
         
         cell.movieName.text = movies.results?[indexPath.row].title
+        cell.moviePhoto = UIImage(data: explorePresenter.getImage(poster_path: (movies.results?[indexPath.row].poster_path) ?? "")) ?? UIImage()
         
         let releaseData = movies.results?[indexPath.row].release_date ?? ""
         
@@ -86,6 +87,7 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate,  UISear
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let id = movies.results?[indexPath.row].id
         let rootVC = MovieViewController()
+        rootVC.moviePhoto = UIImage(data: explorePresenter.getImage(poster_path: (movies.results?[indexPath.row].poster_path) ?? "")) ?? UIImage()
         rootVC.id = id ?? 0
         self.navigationController?.pushViewController(rootVC, animated: true)
         

@@ -72,6 +72,7 @@ class AccountTableViewController: UITableViewController, AccountViewDelegate {
         let id = movies[indexPath.row].id
         let rootVC = MovieViewController()
         rootVC.id = id ?? 0
+        rootVC.moviePhoto = UIImage(data: accountPresenter.getImage(poster_path: (movies[indexPath.row].posterPath) ?? "")) ?? UIImage()
         self.navigationController?.pushViewController(rootVC, animated: true)
         
     }

@@ -76,6 +76,15 @@ class AccountPresenter {
     }
     
     
+    func getImage(poster_path: String) -> Data{
+        
+        guard let imageUrl = URL(string: "https://www.themoviedb.org/t/p/w440_and_h660_face\(poster_path)") else { return Data() }
+        guard let data = try? Data(contentsOf: imageUrl) else {
+            return Data()
+        }
+        return data
     
+        
+    }
     
 }
