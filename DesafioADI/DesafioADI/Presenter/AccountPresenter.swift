@@ -15,64 +15,40 @@ protocol AccountViewDelegate: NSObjectProtocol {
 
 class AccountPresenter {
     
-    var favoriteMovies: [NSManagedObject] = []
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     weak private var accountViewDelegate: AccountViewDelegate?
+    var movies: [MovieDetails] = []
     
     func setViewDelegate(accountViewDelegate: AccountViewDelegate?){
         self.accountViewDelegate = accountViewDelegate
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-          return
-        }
-
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavoriteMovie")
-
-        do {
-          favoriteMovies = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-          print("Could not fetch. \(error), \(error.userInfo)")
-        }
     }
     
     func getMovie(){
-        var movies: [MovieDetails] = []
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-          return
-        }
+        do{
+            let favoriteMovies = try context.fetch(FavoriteMovie.fetchRequest())
 
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavoriteMovie")
-
-        do {
-          favoriteMovies = try managedContext.fetch(fetchRequest)
-        } catch let error as NSError {
-          print("Could not fetch. \(error), \(error.userInfo)")
-        }
-        
-        for movie in favoriteMovies {
-            print(favoriteMovies.count)
-            let movieId = String(describing: movie.value(forKey: "movieId") ?? 0)
-            print(movieId)
-            print(movie)
-            let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieId)?api_key=f13794b05602015b7f895fed45d8e8f7")!
-            
-            let request = URLRequest(url: url)
-            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            for movie in favoriteMovies {
+                let movieId = String(describing: movie.movieId)
+                let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieId)?api_key=f13794b05602015b7f895fed45d8e8f7")!
                 
-                if let result = try? JSONDecoder().decode(MovieDetails.self, from: data!) {
-                    movies.append(result)
-                } else {
-                    print("Erro ao decodificar dados da API")
+                let request = URLRequest(url: url)
+                let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                    
+                    if let result = try? JSONDecoder().decode(MovieDetails.self, from: data!) {
+                        self.movies.append(result)
+                    } else {
+                        print("Erro ao decodificar dados da API")
+                    }
+                    
                 }
-                
+                task.resume()
             }
-            
-            task.resume()
+            self.accountViewDelegate?.displayMovies(movies: movies)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
         }
-        //print("Movies count: \(movies.count))
-        self.accountViewDelegate?.displayMovies(movies: movies)
-        
+
     }
     
     

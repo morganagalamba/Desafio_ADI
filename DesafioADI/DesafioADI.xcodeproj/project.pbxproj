@@ -16,13 +16,14 @@
 		D71ED34E2777F81100582636 /* MovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71ED34D2777F81100582636 /* MovieViewController.swift */; };
 		D71ED3522778101100582636 /* AccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71ED3512778101100582636 /* AccountTableViewController.swift */; };
 		D71ED3542778138800582636 /* AccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71ED3532778138800582636 /* AccountPresenter.swift */; };
-		D78CF4D6277952B0009FC662 /* FavouriteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D78CF4D5277952B0009FC662 /* FavouriteData.swift */; };
 		D7A50489277419960059CB38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A50488277419960059CB38 /* AppDelegate.swift */; };
 		D7A5048B277419960059CB38 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A5048A277419960059CB38 /* SceneDelegate.swift */; };
 		D7A5048D277419960059CB38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A5048C277419960059CB38 /* ViewController.swift */; };
 		D7A50493277419960059CB38 /* DesafioADI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7A50491277419960059CB38 /* DesafioADI.xcdatamodeld */; };
 		D7A50495277419990059CB38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7A50494277419990059CB38 /* Assets.xcassets */; };
 		D7A50498277419990059CB38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7A50496277419990059CB38 /* LaunchScreen.storyboard */; };
+		D7EF92202779EC7E0064B4F3 /* FavoriteMovie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EF921E2779EC7E0064B4F3 /* FavoriteMovie+CoreDataClass.swift */; };
+		D7EF92212779EC7E0064B4F3 /* FavoriteMovie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EF921F2779EC7E0064B4F3 /* FavoriteMovie+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +36,6 @@
 		D71ED34D2777F81100582636 /* MovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewController.swift; sourceTree = "<group>"; };
 		D71ED3512778101100582636 /* AccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewController.swift; sourceTree = "<group>"; };
 		D71ED3532778138800582636 /* AccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountPresenter.swift; sourceTree = "<group>"; };
-		D78CF4D5277952B0009FC662 /* FavouriteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteData.swift; sourceTree = "<group>"; };
 		D7A50485277419960059CB38 /* DesafioADI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioADI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A50488277419960059CB38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7A5048A277419960059CB38 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +44,8 @@
 		D7A50494277419990059CB38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D7A50497277419990059CB38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D7A50499277419990059CB38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D7EF921E2779EC7E0064B4F3 /* FavoriteMovie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteMovie+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D7EF921F2779EC7E0064B4F3 /* FavoriteMovie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteMovie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +95,6 @@
 			children = (
 				D71ED34027778EF600582636 /* Movie.swift */,
 				D71ED34B2777F7B900582636 /* MovieDetails.swift */,
-				D78CF4D5277952B0009FC662 /* FavouriteData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -125,6 +126,8 @@
 		D7A50487277419960059CB38 /* DesafioADI */ = {
 			isa = PBXGroup;
 			children = (
+				D7EF921E2779EC7E0064B4F3 /* FavoriteMovie+CoreDataClass.swift */,
+				D7EF921F2779EC7E0064B4F3 /* FavoriteMovie+CoreDataProperties.swift */,
 				D71ED33F27760C3300582636 /* Model */,
 				D71ED33E27760C1E00582636 /* View */,
 				D71ED33D27760C1100582636 /* Presenter */,
@@ -219,8 +222,9 @@
 				D7A5048B277419960059CB38 /* SceneDelegate.swift in Sources */,
 				D71ED3452777BCBB00582636 /* MoviesTableViewCell.swift in Sources */,
 				D71ED34A2777F6E200582636 /* MoviePresenter.swift in Sources */,
+				D7EF92212779EC7E0064B4F3 /* FavoriteMovie+CoreDataProperties.swift in Sources */,
 				D71ED34127778EF600582636 /* Movie.swift in Sources */,
-				D78CF4D6277952B0009FC662 /* FavouriteData.swift in Sources */,
+				D7EF92202779EC7E0064B4F3 /* FavoriteMovie+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -36,24 +36,17 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate, UISearc
         }
         explorePresenter.searchMovie(query: text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? "")
         self.tableView.reloadData()
-
-    
     }
 
     
     func displayMovies(movies: Movies) {
         self.movies = movies
-
     }
-
-    
-    
+ 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-    
-    
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if(section == 0) {

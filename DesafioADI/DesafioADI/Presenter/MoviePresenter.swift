@@ -17,7 +17,7 @@ class MoviePresenter {
 
     var favoriteMovies: [NSManagedObject] = []
     weak private var movieViewDelegate: MovieViewDelegate?
-    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     func setViewDelegate(movieViewDelegate: MovieViewDelegate?){
         self.movieViewDelegate = movieViewDelegate
@@ -56,6 +56,15 @@ class MoviePresenter {
         } catch let error as NSError {
           print("Could not save. \(error), \(error.userInfo)")
         }
+        
+    }
+    
+    func deleteMovie(movie: FavoriteMovie){
+        
+        
+    }
+    
+    func updateMovie(movie: FavoriteMovie){
         
     }
 }

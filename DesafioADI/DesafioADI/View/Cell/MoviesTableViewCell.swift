@@ -19,7 +19,7 @@ class MoviesTableViewCell: UITableViewCell {
         let photo = UIImageView()
         photo.contentMode = .scaleAspectFit
         photo.translatesAutoresizingMaskIntoConstraints = false
-        photo.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        photo.frame = CGRect(x: 0, y: 0, width: 220, height: 330)
         return photo
     }()
     
@@ -39,20 +39,23 @@ class MoviesTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        //contentView.translatesAutoresizingMaskIntoConstraints = false
-        //contentView.clipsToBounds = true
+        
         moviePhotoView = UIImageView(image: moviePhoto)
         contentView.addSubview(movieName)
         contentView.addSubview(releaseDate)
         contentView.addSubview(moviePhotoView)
         setupConstraints()
     }
-    
+  
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+
     private func setupConstraints() {
+        
+        self.moviePhotoView.image = self.moviePhoto
+        
         NSLayoutConstraint.activate([
             movieName.leadingAnchor.constraint(equalTo: moviePhotoView.trailingAnchor, constant: 16),
             movieName.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 16),
@@ -66,8 +69,9 @@ class MoviesTableViewCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            moviePhotoView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: -16),
-            moviePhotoView.topAnchor.constraint(equalTo: contentView.topAnchor,constant: -16),
+            moviePhotoView.heightAnchor.constraint(equalToConstant: 50),
+            moviePhotoView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            moviePhotoView.topAnchor.constraint(equalTo: contentView.topAnchor,constant: 16),
             
         ])
     }

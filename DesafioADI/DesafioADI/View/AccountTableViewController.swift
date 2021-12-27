@@ -32,7 +32,7 @@ class AccountTableViewController: UITableViewController, AccountViewDelegate {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.movies.count ?? 5
+        return self.movies.count 
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
