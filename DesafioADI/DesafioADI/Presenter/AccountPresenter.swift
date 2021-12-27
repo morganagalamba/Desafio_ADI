@@ -29,36 +29,48 @@ class AccountPresenter {
 
         do {
           favoriteMovies = try managedContext.fetch(fetchRequest)
-        //print(favoriteMovies)
         } catch let error as NSError {
           print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
     
     func getMovie(){
-        
         var movies: [MovieDetails] = []
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+          return
+        }
+
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavoriteMovie")
+
+        do {
+          favoriteMovies = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+          print("Could not fetch. \(error), \(error.userInfo)")
+        }
         
         for movie in favoriteMovies {
             print(favoriteMovies.count)
             let movieId = String(describing: movie.value(forKey: "movieId") ?? 0)
-            print(favoriteMovies)
+            print(movieId)
+            print(movie)
             let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieId)?api_key=f13794b05602015b7f895fed45d8e8f7")!
             
             let request = URLRequest(url: url)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
                 
                 if let result = try? JSONDecoder().decode(MovieDetails.self, from: data!) {
-                    print("ENTOU")
                     movies.append(result)
-                   
                 } else {
                     print("Erro ao decodificar dados da API")
                 }
                 
             }
+            
             task.resume()
         }
+        //print("Movies count: \(movies.count))
         self.accountViewDelegate?.displayMovies(movies: movies)
         
     }

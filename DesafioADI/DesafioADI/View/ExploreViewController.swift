@@ -8,8 +8,9 @@
 import Foundation
 import UIKit
 
-class ExploreViewController: UITableViewController, ExploreViewDelegate {
+class ExploreViewController: UITableViewController, ExploreViewDelegate,  UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     
+    var 
     var movies = Movies()
     private let explorePresenter = ExplorePresenter()
     
@@ -20,13 +21,24 @@ class ExploreViewController: UITableViewController, ExploreViewDelegate {
         navigationItem.title = "Explore"
         explorePresenter.setViewDelegate(exploreViewDelegate: self)
         
+        let searchBar:UISearchController = UISearchController()
+        navigationItem.searchController =  searchBar
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
     }
     
     func displayMovies(movies: Movies) {
         self.movies = movies
-        DispatchQueue.main.async {
+        /*DispatchQueue.main.async {
             self.tableView.reloadData()
-        }
+        }*/
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

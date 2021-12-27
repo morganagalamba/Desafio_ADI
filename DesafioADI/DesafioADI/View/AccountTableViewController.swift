@@ -15,12 +15,15 @@ class AccountTableViewController: UITableViewController, AccountViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Account"
-
         tableView.register(MoviesTableViewCell.self, forCellReuseIdentifier: MoviesTableViewCell.identifier)
         accountPresenter.setViewDelegate(accountViewDelegate: self)
         accountPresenter.getMovie()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        accountPresenter.getMovie()
+        self.tableView.reloadData()
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -67,11 +70,9 @@ class AccountTableViewController: UITableViewController, AccountViewDelegate {
     
     func displayMovies(movies: [MovieDetails]) {
         self.movies = movies
-        print(self.movies)
-        DispatchQueue.main.async {
+        /*DispatchQueue.main.async {
             self.tableView.reloadData()
-        }
-        
+        }*/
     }
     
     

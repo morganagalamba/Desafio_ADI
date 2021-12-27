@@ -49,11 +49,9 @@ class MoviePresenter {
         let entity = NSEntityDescription.entity(forEntityName: "FavoriteMovie", in: managedContext)!
         let movie = NSManagedObject(entity: entity, insertInto: managedContext)
         movie.setValue(id, forKeyPath: "movieId")
-
         do {
           try managedContext.save()
           favoriteMovies.append(movie)
-            print(favoriteMovies)
         
         } catch let error as NSError {
           print("Could not save. \(error), \(error.userInfo)")
