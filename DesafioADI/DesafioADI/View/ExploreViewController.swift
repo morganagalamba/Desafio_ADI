@@ -10,7 +10,6 @@ import UIKit
 
 class ExploreViewController: UITableViewController, ExploreViewDelegate,  UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     
-    var 
     var movies = Movies()
     private let explorePresenter = ExplorePresenter()
     

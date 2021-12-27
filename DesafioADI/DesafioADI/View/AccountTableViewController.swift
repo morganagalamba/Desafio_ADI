@@ -68,6 +68,14 @@ class AccountTableViewController: UITableViewController, AccountViewDelegate {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let id = movies[indexPath.row].id
+        let rootVC = MovieViewController()
+        rootVC.id = id ?? 0
+        self.navigationController?.pushViewController(rootVC, animated: true)
+        
+    }
+    
     func displayMovies(movies: [MovieDetails]) {
         self.movies = movies
         /*DispatchQueue.main.async {
