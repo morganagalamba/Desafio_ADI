@@ -19,7 +19,7 @@ class MovieViewController: UIViewController, UIScrollViewDelegate, MovieViewDele
         let photo = UIImageView()
         photo.contentMode = .scaleAspectFit
         photo.translatesAutoresizingMaskIntoConstraints = false
-        photo.frame = CGRect(x: 0, y: 0, width: 440, height: 660)
+        photo.frame = CGRect(x: 0, y: 0, width: 220, height: 330)
         return photo
     }()
     
@@ -87,6 +87,7 @@ class MovieViewController: UIViewController, UIScrollViewDelegate, MovieViewDele
         ])
         
         NSLayoutConstraint.activate([
+            moviePhotoView.heightAnchor.constraint(equalToConstant: 330),
             moviePhotoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor ,constant: 16),
         ])
     
